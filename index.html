@@ -1,0 +1,29 @@
+<!--https://www.astro.com/cgi/swetest.cgi?b=18.03.1997&n=1&s=1&p=p&e=-eswe&f=PZB&arg=-t16%3A45+-roundsec+-head+-->
+<h1>Calcolo Latitudini</h1>
+Funziona con google chrome<br><br>
+Il programma fa riferimento ad astro.com => <a href="https://www.astro.com/swisseph/swetest.htm">link</a><br><br>
+<input type="date" id="data" pattern="\d{4}-\d{2}-\d{2}">
+<input type="time" id="ora">
+<input type="submit" id="submit" value="calc">
+<br><br>
+Al click si genera un link dove trovere 3 colonne: nome pianeta / longitudine / latitudine
+<br><br>
+<div id="ris"></div>
+
+<script>
+document.getElementById('submit').addEventListener("click", function(e){
+  var data = document.getElementById('data').value;
+  var ora = document.getElementById('ora').value;
+
+
+  var anno = data.substring(0,4);
+  var mese = data.substring(5,7);
+  var giorno = data.substring(8,10);
+
+  var dataformattata = giorno+'.'+mese+'.'+anno;
+
+  var link = "https://www.astro.com/cgi/swetest.cgi?b="+dataformattata+"&n=1&s=1&p=p&e=-eswe&f=PZB&arg=-t"+ora+"+-roundsec+-head+";
+
+  document.getElementById('ris').innerHTML = '<a href="'+link+'" target="_blank">'+link+'</a>';
+}, false);
+</script>
